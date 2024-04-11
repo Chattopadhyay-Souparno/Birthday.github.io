@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niharika's Birthday Countdown</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+            animation: pulsate 8s ease-out infinite;
+        }
+
+        @keyframes pulsate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .content {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        #countdown {
+            display: inline-block;
+            animation: scaleUp 1s ease-in-out infinite;
+        }
+
+        @keyframes scaleUp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .social-links {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links img {
+            width: 24px;
+            margin-right: 8px;
+        }
+
+        .social-links span {
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const birthday = new Date('May 11, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = birthday - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = days + "days " + hours + "hours " 
+                                         + minutes + "minutes " + seconds + "seconds ";
+
+            setTimeout(updateCountdown, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCountdown);
+    </script>
+</head>
+<body>
+
+<video autoplay muted loop class="bg-video">
+    <source src="Clips.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div class="content">
+    <section>
+        <header>
+            <h1>Countdown to my Dearest Golu's Birthday</h1>
+        </header>
+        <h2>🎉 <span id="countdown"></span> 🎉</h2>
+        <p>Every single day is special since you are in my life. You deserve the world my sweetheart. I love you so much</p>
+        <footer>
+            <p>With ❤️ Momo</p>
+        </footer>
+    </section>
+</div>
+
+<div class="social-links">
+    <a href="https://open.spotify.com/show/706hylM6zaDW8LrrYxcggQ?si=102b8e6cc69447bc" target="_blank">
+        <img src="slogo.png" alt="Spotify">
+        <span>Podcasts</span>
+    </a>
+    <a href="https://youtu.be/rrfsfWrxfiA?si=LIhyAkCTwRiwCIgy" target="_blank">
+        <img src="ylogo.jpg" alt="YouTube">
+        <span>Ambience</span>
+    </a>
+    <a href="https://www.ubereats.com/gb/feed?diningMode=DELIVERY&lat=51.5007032&lng=-3.1902214&mod=pendingRating&ps=1&referrer=https%3A%2F%2Fwww.google.com%2F&so=https%3A%2F%2Fwww.ubereats.com%2Fgb" target="_blank">
+        <img src="uelogo.jpg" alt="Uber Eats">
+        <span>Happiness</span>
+    </a>
+    <a href="https://www.linkedin.com/in/niharika-singh-1105/" target="_blank">
+        <img src="llogo.png" alt="LinkedIn">
+        <span>Essentials</span>
+    </a>
+</div>
+
+</body>
+</html>
